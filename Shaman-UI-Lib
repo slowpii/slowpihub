@@ -842,9 +842,13 @@ end
 function sectiontable:Keybind(Info)
 Info.Text = Info.Text or "Keybind"
 Info.Flag = Info.Flag or nil
-Info.Default = Info.Default
+Info.Default = Info.Default or Enum.KeyCode.Clear
 Info.Callback = Info.Callback or function() end
 Info.Tooltip = Info.Tooltip or ""
+
+if Info.Flag ~= nil then
+    library.Flags[Info.Flag] = false
+end
 
 local PressKey = Info.Default
 
